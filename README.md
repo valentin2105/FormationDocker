@@ -14,3 +14,6 @@ https://ericchiang.github.io/post/containers-from-scratch/
 
 #### Triple stage build
 https://medium.com/travis-on-docker/triple-stage-docker-builds-with-go-and-angular-1b7d2006cb88
+
+#### 12 Factor
+https://12factor.net/fr/
