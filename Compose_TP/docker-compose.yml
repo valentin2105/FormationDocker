@@ -1,22 +1,30 @@
 version: '3.3'
 
 services:
-
    nginx-proxy:
-     image: 192.168.99.101:5000/nginx-proxy
+     image: 10.0.66.54:5000/nginx-proxy
      ports:
        - "80:80"
      volumes:
        - /var/run/docker.sock:/tmp/docker.sock:ro
 
-   hello:
-     image: 192.168.99.101:5000/hello:v4
+   portainer:
+     image: portainer/portainer
+     restart: always
      environment:
-       VIRTUAL_HOST: hello.nc
+       - VIRTUAL_HOST=dev.portainer
+     volumes:
+       - /var/run/docker.sock:/var/run/docker.sock
+       - portainer_data:/data
+
+   hello:
+     image: 10.0.66.54:5000/hello:v4
+     environment:
+       VIRTUAL_HOST: hello.dev
        VIRTUAL_PORT: 80
 
    db:
-     image: 192.168.99.101:5000/mysql:5.7
+     image: 10.0.66.54:5000/mysql:5.7
      volumes:
        - db_data:/var/lib/mysql
      restart: always
@@ -31,21 +39,21 @@ services:
        - db
      volumes:
        - wp_data:/var/www/html/wp-content
-      # - ./wp-config.php:/var/www/html/wp-config.php
-     image: 192.168.99.101:5000/wordpress:latest
+     image: 10.0.66.54:5000/wordpress:latest
      restart: always
      environment:
        WORDPRESS_DB_HOST: db:3306
        WORDPRESS_DB_USER: wordpress
        WORDPRESS_DB_PASSWORD: wordpress
        WORDPRESS_DB_NAME: wordpress
-       VIRTUAL_HOST: wordpress.nc
+       VIRTUAL_HOST: wordpress.dev
 
 #   redis:
-#     image: 192.168.99.101:5000/redis:latest
+#     image: 10.0.66.54:5000/redis:latest
 #     restart: always
 
 volumes:
     db_data: {}
     wp_data: {}
+    portainer_data: {}
 
