@@ -17,3 +17,6 @@ https://medium.com/travis-on-docker/triple-stage-docker-builds-with-go-and-angul
 
 #### 12 Factor
 https://12factor.net/fr/
+
+### Awesome Docker
+https://github.com/veggiemonk/awesome-docker
