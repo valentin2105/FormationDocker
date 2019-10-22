@@ -61,6 +61,9 @@ gluster volume status gfs
 
 gluster volume info gfs
 
+# On all nodes
+mkdir -p /mnt/gluster
+
 (node1)# mount.glusterfs localhost:/gfs /mnt/gluster
 (node2)# mount.glusterfs localhost:/gfs /mnt/gluster
 (node3)# mount.glusterfs localhost:/gfs /mnt/gluster
@@ -79,8 +82,8 @@ rm  /mnt/gluster/test.txt
 #Docker Swarm
 #######################################
 
-gluster1:~# mkdir /mnt/wp-content
-gluster1:~# mkdir /mnt/mysql
+gluster1:~# mkdir /mnt/gluster/wp-content
+gluster1:~# mkdir /mnt/gluster/mysql
 
 
 swarm-manager:~# cat wordpress-stack.yml
