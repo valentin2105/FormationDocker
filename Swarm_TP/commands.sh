@@ -1,3 +1,7 @@
+sudo apt update
+sudo apt install openssh-server
+
+
 ## On configure le DNS de notre cluster, node01,2,3
 
 (node1)# cat /etc/hosts
